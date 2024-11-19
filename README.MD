@@ -12,21 +12,39 @@ This is a Spring Boot application for managing tasks.
 It uses an in-memory H2 database that mimics MySQL and includes basic authentication with username="user" and password="pass". 
 The application supports CRUD operations on tasks via RESTful endpoints.
 How to Run the Application
-1. Prerequisites
+Database Schema
 
-   Java 17 or higher installed
-   Maven 3.6 or higher installed
-   A code editor (e.g., IntelliJ IDEA)
+ Each task :
 
-Build the Project: Run the following command to build the project:
+ - id (unique identifier)
 
-mvn clean install
+ - title (string)
 
-Run the Application: Start the application using:
+ - description (string)
 
-    mvn spring-boot:run
+ - due_date (date)
 
-   
+ - status (enum: "pending", "in_progress", "completed")
+
+ - created_at (timestamp)
+
+ - updated_at (timestamp)
+
+
+ Implement the following API endpoints:
+
+ - GET /tasks: Retrieve all tasks
+
+ - GET /tasks/{id}: Retrieve a specific task by ID
+
+ - POST /tasks: Create a new task
+
+ - PUT /tasks/{id}: Update an existing task
+
+ - DELETE /tasks/{id}: Delete a task
+
+ - PATCH /tasks/{id}/complete: Mark a task as complete
+
 
 Testing the Application
 1. Authentication
@@ -100,19 +118,6 @@ You can test endpoints using Postman, cURL, or a similar tool.
 
 3. Testing
   Use run mvn test
-
-Database Schema
-
-The TASK table is structured as follows:
-Column Name	Data Type	Description
-id	INT	Primary key, auto-incremented
-title	VARCHAR(100)	Task title
-description	VARCHAR(255)	Task description
-due_date	DATE	Due date of the task
-status	VARCHAR(50)	Status of the task (e.g., PENDING, COMPLETED)
-created_at	TIMESTAMP	Timestamp when the task was created
-updated_at	TIMESTAMP	Timestamp when the task was last updated
-Running Unit Tests
 
 To ensure the application is functioning as expected:
 
